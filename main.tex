@@ -1,4 +1,4 @@
-%!TEX root = ./main.tex
+%!TEX root = main.tex
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
@@ -31,7 +31,8 @@
     \ifDocType{T3\_3100}{%
             % kein Sperrvermerk für T3100
         }{%
-            \input{resources/restrictionNotices}
+            %\input{resources/restrictionNotices}
+            \includepdf{resources/pdfs/PES_Sperrklausel_Masterarbeit.pdf}
         }%
 
     %% Erklärung
@@ -54,7 +55,7 @@
     \clearpage
     \pagenumbering{arabic}
 
-    %% ABkürzungsverezeichnis
+    %% Abkürzungsverezeichnis
     \input{resources/acronyms}
 
     \acresetall

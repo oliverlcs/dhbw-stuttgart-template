@@ -3,11 +3,40 @@
 \chapter{Einleitung}
 Die Einleitung soll den Ausgangspunkt der Arbeit umreißen, in kurzer Form zur Problemstellung hinführen und das Interesse der lesenden Person für die Arbeit wecken. Allgemeine Einleitung ins Thema, keine Unternehmens- oder Produktbeschreibungen, Organigramme u.ä., wenn diese nicht direkt zum Thema führen. Ziele und Vorgehensweise nicht vermischen.
 
+Angesichts des Klimawandels sind umweltschonende Fortbewegungsmittel besonders wichtig. Insbesondere Elektrofahrzeuge spielen eine zentrale Rolle bei der Reduktion von CO2-Emissionen und einer nachhaltigeren Mobilität \cite{urlIdParisKlimaabkommen}. Dafür müssen Elektrofahrzeuge langlebig sein, da die Produktion sehr ressourcenaufwendig ist \cite{urlIdUmwelteinflussLithiumBatterien}. Um die Lebensdauer realistisch abzuschätzen, sind genaue Vorhersagen zur Batteriealterung notwendig. Mit ihnen kann eine nachhaltigere Batterieentwicklung umgesetzt und das Vertrauen in Elektrofahrzeuge gestärkt werden.\\
+Trotz der klaren Vorteile einer präzisen Batterievorhersage stellen sich gleichzeitig große Herausforderungen, die den Fortschritt in diesem Bereich erschweren. Diese Herausforderungen betreffen vor allem die Vielfalt der Batterietypen (Li-Ion, Festkörperbatterien, etc.), die unterschiedlich altern \cite{urlIdBatterieAlterungLithiumBatterien}, \cite{urlIdBatterieAlterungVerschiedenerSoCLithiumBatterien}, \cite{urlIdBatterieAlterungFestkörperBatterien}, \cite{urlIdBatterieAlterungVerschiedenerLithiumBatterien}, sowie die Vielzahl externer Faktoren wie Fahrverhalten und Klimabedingungen \cite{urlIdBatterieAlterungTemperatur}, die die Batteriealterung beeinflussen. Zudem kämpfen viele bestehende Methoden mit der Verarbeitung dynamischer Fahrzeugdaten, wodurch es schwierig wird, generalisierbare Vorhersagen zu treffen. Diese Arbeit widmet sich der datengetriebenen Vorhersage der Batteriealterung von elektrischen Kundenfahrzeugen. Dabei werden Machine-Learning- und Time-Series-Forecasting-Algorithmen analysiert und hinsichtlich Genauigkeit und Praxistauglichkeit validiert.
+\pagebreak
 \section{Problemstellung}
+Die genaue Vorhersage der Batteriealterung von Elektrofahrzeugen über Jahre hinweg bringt Schwierigkeiten mit sich. Bei gleichen Batterien hat besonders das individuelle Fahr- \cite{urlIdBatterieAlterungVerschiedenerLithiumBatterien} und Ladeverhalten \cite{urlIdBatterieAlterungVerschiedenerSoCLithiumBatterien}, Umweltbedingungen \cite{urlIdBatterieAlterungTemperatur} und Fertigungstoleranzen einen erheblichen Einfluss auf den Alterungsprozess. Dadurch gestaltet sich eine verlässliche Prognose der Batterielebensdauer als komplex und unsicher.
+\\
+Neben diesen Faktoren stellt die Qualität der Fahrzeugflottendaten ein weiteres Problem dar. Diese Daten enthalten Rauschen, Ausreißer und fehlende Werte \cite{idEigeneFlottenDaten}, was eine genaue Vorhersage erschwert. Zudem ist das zukünftige Fahrverhalten naturgemäß unbekannt, sodass langfrisitge Prognosen die bisherigen Unsicherheiten verstärken.
+\\
+Um diese Unsicherheiten auszugleichen, existieren verschiedene Ansätze, die die Batteriealterung vorhersagen \cite{urlIdDifferentAgingMethodsForLIBs}. Physikalsisch-chemische Modelle ermöglichen eine genaue und reproduzierbare Alterungssimulation unter Laborbedingungen \cite{urlIdPhysicalAgingMethodsForLIBs}. Jedoch sind diese Modelle mit ihrem einhergehenden hohen Aufwand schlecht auf Fahrzeugflotten skalierbar. Im Gegensatz dazu skalieren datengetriebene Modelle, wie maschinelles Lernen und neuronale Netze, auf reale Fahrzeugdaten ideal \cite{urlIdDataAgingMethodsForLIBs}. Allerdings gehen sie mit Herausforderungen wie dem Umgang mit verauschten Daten, Überanpassung und Generalisierbarkeit auf unbekannte Fahrprofile einher.
+Das Datenproblem verschärft sich weiter, da der Gesundheitszustand einer Batterie - State of Health (SoH) - nicht exakt bestimmbar ist \cite{urlIdSoCSoHDependencyLIBs}. Beispielsweise altern Batterien abhängig von inneren chemischen Prozessen, die nicht erfassbar sind, ohne die Batterie zu zerlegen \cite{urlIdBatterieAlterungVerschiedenerSoCLithiumBatterien}. Daher existieren verschiedene Messmethoden, die unterschiedlich genau den SoH erfassen und dabei die Batterie intakt lassen.
+\\
+Die Batteriealterung von Kundenfahrzeugen vorherzusagen erweist sich als komplex, da sowohl Datenlage, Modellauswahl und SoH-Bestimmung ihr eigenes Maß an Unsicherheit mit sich bringen. Um eine möglichst realitätsnahe Vorhersage der Batteriealterung zu treffen, beschäftigt sich die Arbeit mit datengetriebenen Modellen.
 
-\section{Ziel}
+\pagebreak
+\section{Ziel der Arbeit}
 
+Das Ziel der Arbeit ist die Entwicklung eines datengetriebenen Verfahrens zur Prognose der Batteriealterung in Elektrofahrzeugen basierend auf realen Fahrzeugflottendaten. Hierbei wird der Fokus auf eine Zeitreihenvorhersage des SoH über mehrere Jahre für einzelne Fahrzeuge gelegt. Genaue Prognosen verbessern die Bewertung des Gesundheitszustands, das eine nachhaltigere Nutzung ermöglicht.
+\\
+Die Grundlage der Vorhersagen bilden die Fahrzeugflottendaten, die typischerweise Rauschen, Ungenauigkeiten und Messlücken aufweisen \cite{idEigeneFlottenDaten}. Mit synthetischen Daten können diese Probleme minimiert werden, jedoch sind die generierten Daten kaum validierbar. Daher verzichtet die Arbeit bewusst darauf synthetische Daten zu verwenden.
+\\
+Zur Zielerreichung werden Batterieaufbau sowie relevante Alterungsprozesse untersucht, um letztere mittels datengetriebener Modellen wie Machine Learning und neuronalen Netzen vorherzusagen. Die Datenaufbereitung vor dem Modelltraining umfasst die Bereinigung des bestehenden Datensatzes von Rauschen und Messlücken und der Identifikation der wichtigsten Einflussfaktoren auf die Alterung. Die Validierung der Modellergebnisse erfolgt anhand typischer Degradationsmuster von Lithium-Ionen-Batterien aus der Literatur, um realitätsnahe Ergebnisse zu liefern. Dabei grenzt sich die Arbeit bewussst von physikalsisch-chemischen Modellierungen und Laboruntersuchungen ab.
+\\
+Weitergehend bewerten verschiedene Kriteren den Erfolg des entwickelten Verfahrens. Dazu zählen die Fehlermaße der Modelle, wie RMSE oder MAE, und die Robustheit bezüglich verauschten und unvollständigen Daten sowie die Generalisierbarkeit auf unterschiedliche Fahrzeugprofile innerhalb der Flotte.
+\pagebreak
 \section{Vorgehensweise}
 
-\section{Aufgabenstellung}
-Die Fragestellung der Aufgabe ist zu präzisieren. Insbesondere sind das Umfeld, die vorhandenen Randbedingungen und Betrachtungsgrenzen darzustellen.
+Die Arbeit strukturiert sich in folgende Arbeitsschritte:
+ 
+\begin{itemize}
+    \item \textbf{Theoretische Grundlage}: Ausführung der theoretischen Grundlagen der Batteriealterung.
+    \item \textbf{Modellanalyse}: Auswahl und Analyse geeigneter Machine-Learning- und Zeitreihen-Algorithmen.
+    \item \textbf{Datenanalyse}: Untersuchung der Fahrzeugflottendatten hinsichtlich Qualität, Rauschen und Ausreißer.
+    \item \textbf{Feature-Identifikation}: Identifikation relevanter Features für die Batteriealterung.
+    \item \textbf{Datenvorverarbeitung}: Vorverarbeitung und Filtern der Fahrzeugflottendaten.
+    \item \textbf{Modelltraining und -validierung}: Training und Validierung der Modelle anhand bekannten Alterungsverläufen.
+    \item \textbf{Bewertung}: Vergleich der Modellergebnisse unter Berücksichtigung von Genauigkeit, Robustheit und Generalisierbarkeit.
+\end{itemize}

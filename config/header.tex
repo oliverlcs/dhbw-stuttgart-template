@@ -17,6 +17,8 @@
 \usepackage[utf8]{inputenc}         	% Quelldateicodierung
 \usepackage[T1]{fontenc}	            % Fontmap-Kodierung, diese wird von der pdflatex-Engine benötigt
 \usepackage[english, ngerman]{babel}	% Sprache
+\usepackage{pdfpages}
+\usepackage[version=4]{mhchem}
 
 %% ifDocType Befehlsdefinition
 \newcommand{\ifDocType}[3]{%
@@ -45,7 +47,7 @@
 \ifDocType{T3\_3100}{%
     % kein Logo bei T3100
 }{%
-    \lohead{\includegraphics[height=1.5cm]{resources/images/logo-company.png}}
+    \lohead{\includegraphics[height=1.5cm]{resources/pdfs/peg_logo.pdf}}
 }
 \chead{}
 \rohead{\includegraphics[height=1.6cm]{resources/images/logo-dhbw.png}}
