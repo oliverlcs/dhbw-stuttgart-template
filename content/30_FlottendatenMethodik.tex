@@ -1,0 +1,30 @@
+%!TEX root = ../main.tex
+
+\chapter{Datengrundlage und Methodik}
+
+\section{Systemübersicht}
+
+- Datenflussdiagramm
+
+\section{Analyse der Flottendaten und Feature-Auswahl}
+
+Beschreibung:
+- Woher kommen die Daten? (Qelle, Messsystem, Erhebungszeitraum, Direkt messende Daten wenn bestimmte Randbedingungen erfüllt sind -> ungenau und problematisch)
+- Struktur der Daten? (Tabellarisch, Zeitreihen, Pro Fahrzeug oder aggregiert)
+- Was enthalten sie? (Anzahl der Fahrzeuge, Zyklen, welche Messgrößen)
+- Wie vollständig sind sie? (Fehlende Werte, Samplingrate)
+
+Analyse:
+- Korrelationsmatrix, ANOVA, Chi-Quadrat-Test
+- Verteilung einzelner Merkmale
+- Zeitliche Verläufe: Trends, Saisonalitäten
+- Ausreißer und Anomielen: Extremwerte, unplausible Datenpunkte
+- Missing Values: Wie viele, Muster erkennbar?
+- Tools: Boxplots, Heatmaps, Scatterplots, line plots über Zeit, Pearson-Korrelation, PCA, Clustering
+- Ziel: relevanten Features erkennen
+
+Feature Auswahl:
+- redundante, irrelevante oder korrelierte Features entfernen
+Ziel: Vorhersagekraft maximieren und Overfitting vermeiden
+
+\section{Auswahl der Machine Learning-Methodik}
