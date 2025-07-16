@@ -13,14 +13,13 @@ Elektrofahrzeuge nutzen überwiegend \acs{LIB}, die sich aus zahlreichen Zylinde
 
 Zylinderzellen zeichnen sich durch eine hohe mechanische Stabilität und einer langen Lebensdauer aus, erfordern jedoch eine aufwendigere Kühlung und weisen bei gleichem Bauvolumen eine geringere Energiedichte als Pouch-Zellen auf. Zugleich ermöglichen Pouch-Zellen flexible Bauformen und höhere Energiedichten, neigen jedoch während des Alterungsprozesses zur Volumenexpansion (Swelling), was die Batteriealterung beschleunigt \cite{articlePouchZellenAlterung}.
 \\
-Unabhängig vom Zellformat besteht eine \acs{LIB} aus Anode, Kathode, Separator, Stromkollektoren und Elektrolyt \cite{urlIdRecentAdvancementsLIB}, wie in Abbildung  dargestellt. Diese Komponenten ermöglichen einen Ionenfluss im Zellinnern und einen gleichzeitigen Elektronenfluss im äußeren Stromkreis, damit elektrischer Strom fließen kann \cite{urlIdLIBFUnktionsweise}.
+Unabhängig vom Zellformat besteht eine \acs{LIB} aus Anode, Kathode, Separator, Stromkollektoren und Elektrolyt \cite{urlIdRecentAdvancementsLIB}, wie in Abbildung \ref{fig:aufbau-nmc-zelle} dargestellt. Diese Komponenten ermöglichen einen Ionenfluss im Zellinnern und einen gleichzeitigen Elektronenfluss im äußeren Stromkreis, damit elektrischer Strom fließen kann \cite{urlIdLIBFUnktionsweise}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[height=0.4\linewidth]{resources/images/aufbau-nmc-zelle}
 	\caption{Aufbau einer \acs{LIB}-Zelle beim Entladeprozess \cite{articleAlterungLithiumBatterien}}
 	\label{fig:aufbau-nmc-zelle}
 \end{figure}
-\ref{fig:aufbau-nmc-zelle}
 
 Beim Entladen einer \acs{LIB} oxidiert Lithium in der Graphitanode unter Freisetzung von \ce{Li+}-Ionen und Elektronen. Diese Elektronen fließen über den Kupfer-Stromkollektor durch den äußeren Stromkreis zum Aluminium-Stromkollektor und treiben dabei elektrische Verbraucher an. Parallel dazu diffundieren die \ce{Li+}-Ionen durch das Elektrolyt und den Separator zur Kathode aus \ac{NMC}, wo sie in die Kristallstruktur eingelagert werden \cite{urlIdLIBFUnktionsweise}. Im Ladeprozess laufen die elektrochemischen Reaktionen umgekehrt ab. Lithium wird an der NMC-Anode oxidiert, wobei Elektronen über den Aluminium-Stromkollektor und den äußeren Stromkreis zum Kupfer-Stromkollektor fließen. Die \ce{Li+}-Ionen wandern erneut durch das Elektrolyt, passieren den Separator und lagern sich in der Graphitkathode ein \cite{urlIdLIBFUnktionsweise}.
 \\
@@ -58,13 +57,14 @@ Zu den direkt messenden Methoden zählen Amperestundenintegration und Innenwider
 
 \section{Datengetriebene Ansätze zur zukünftigen \acs{SoH}-Prognose}
 
-Die Prediktion des zukünftigen \acs{SoH} erweist sich als besonders schwierig, da Batterien nicht linear und durch das Zusammenspiel komplexer Prozesse altern \cite{SOHComplexity}. Diverse Ansätze extrapolieren erfolgreich die Kapazität in die nahe Zukunft, wie \ac{SVM} \cite{urlSVM}, \ac{RVM} \cite{RVM} und \acs{NN} \cite{SOHNeuralNetworks}. Allerdings wurden all diese Untersuchungen unter Laborbedingungen oder unter begrenzter Simulation realer Fahrbedingungen durchgeführt, sodass sie kaum auf reale Flottendaten übertragbar sind. Die Analyse von Flottendaten wird durch ungenaue \acs{SoH}-Informationen einzelner Fahrzeuge erschwert, da das Kundennutzungsverhalten den Einsatz präziser Messmethoden wie dem Coulomb-Counting verhindert \cite{SOHCoulombCounting}. Daher existieren in der Literatur bislang nur wenige Ansätze zur \acs{SoH}-Bestimmung auf Basis realer Flottendaten. Einer dieser wenigen Ansätze stammt von Hong et al., die ein End-to-End Deep-Learning-Framework zur \ac{RUL} Bestimmung von Batterien entwickelt haben. Im Kontext von \acs{LIB} bezeichnet \acs{RUL} den verbleibenden Zeitraum, bis ein kritischer Grenzwert des \acs{SoH}, üblicherweise 80\%, unterschritten wird.
-
-
-
-Grundkonzepte des maschinellen Lernens: Überwachtes vs. unüberwachtes Lernen, Regressionsprobleme vs. Klassifikation
-Begriffe: Features, Labels, Overfitting, Trainings-/Test-/Validierungsdaten
-Relevante Algorithmen für Batterieprognosen: Entscheidungsbäume, Random Forest, Support Vector Machines, k-NN
-
-Probleme der Datenqualität: Rauschen, fehlende Werte, inkonsistente Zyklen
-Erklärbarkeit von Modellen: Black-Box-Problematik vs. interpretiere Modelle (SHAP, LIME)
+Die Prediktion des zukünftigen \acs{SoH} erweist sich als besonders schwierig, da Batterien nicht linear und durch das Zusammenspiel komplexer Prozesse altern \cite{SOHComplexity}. Dennoch existieren verschiedene Ansätze, um die Kapazität in die nahe Zukunft erfolgreich zu extrapolieren, etwa mithilfe von \ac{SVM} \cite{urlSVM}, \ac{RVM} \cite{RVM} und \acs{NN} \cite{SOHNeuralNetworks}.
+\par
+Allerdings wurden all diese Untersuchungen unter Laborbedingungen oder unter begrenzter Simulation realer Fahrbedingungen durchgeführt, sodass sie kaum auf reale Flottendaten übertragbar sind. Die Analyse von Flottendaten wird durch ungenaue \acs{SoH}-Informationen einzelner Fahrzeuge erschwert, da das Kundennutzungsverhalten den Einsatz präziser Messmethoden wie dem Coulomb-Counting verhindert \cite{SOHCoulombCounting}. Daher existieren in der Literatur bislang nur wenige Ansätze zur \acs{SoH}-Bestimmung auf Basis realer Flottendaten.
+\par
+Einer der wenigen Ansätze stammt von Li et al. und basiert auf der automatischen Zuordnung ähnlicher Alterungsmuster innerhalb einer Fahrzeugflotte. Dabei wird ein Zielfahrzeug ausgewählt und dessen bisheriger SoH-Verlauf mit dem von Flottenfahrzeugen verglichen. Für Fahrzeuge mit ähnlichem Alterungsverhalten wird der umfassendere Verlauf als Trainingsbasis verwendet, um mithilfe eines \ac{MOSMGP} den zukünftigen \acs{SoH}-Verlauf des Zielfahrzeugs vorherzusagen. Dieser Ansatz, visualisiert in Abbildung \ref{fig:nn-vehicle-fleet-data}, erreichte einen durchschnittlichen \ac{MAPE} von 1,39\% und einen durchschnittlichen \ac{RMSE} von 1,92Ah.
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=1.0\linewidth]{resources/images/nn-vehicle-fleet-data}
+	\caption{Ansatz zur zukünftigen \acs{SoH}-Bestimmung von Flottenfahrzeugen \cite{nnVehicleFleetData}}
+	\label{fig:nn-vehicle-fleet-data}
+\end{figure}
