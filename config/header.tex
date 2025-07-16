@@ -19,6 +19,7 @@
 \usepackage[english, ngerman]{babel}	% Sprache
 \usepackage{pdfpages}
 \usepackage[version=4]{mhchem}
+\usepackage{bookmark}
 
 %% ifDocType Befehlsdefinition
 \newcommand{\ifDocType}[3]{%
@@ -67,6 +68,9 @@
 \cfoot{\documentAuthor}
 \ofoot{Seite | \thepage}
 \setlength{\marginparwidth}{2cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0em}
+
 
 \usepackage{scrhack}    % KOMA Skript Fehlermeldung
 
@@ -87,6 +91,7 @@
 \usepackage{xurl}                   % URL Umbruch
 \usepackage{pdflscape}              % Querformat
 \usepackage{enumitem}               % Aufzählungsstile
+\usepackage{textcomp}               % Grad Celcius Zeichen
 
 %% Bibliographie
 \usepackage[
@@ -99,27 +104,11 @@
 \loadbibresources			% Lädt die Resourcen aus der config Datei
 \newcommand{\mkbibnodate}{o\adddot J\adddot}        % o. J.
 \AtEveryBibitem{\iffieldundef{year}{\restorefield{year}{\mkbibnodate}}{}}
-\usepackage{csquotes}               % Zitierung mit Sprache verknüpfen
+\usepackage{csquotes}       % Zitierung mit Sprache verknüpfen
 
 %% Querverweise und Links
 \definecolor{LinkColor}{HTML}{00007A} % Farbe
-\usepackage[%
-    pdftitle={\documentTitle},
-    pdfauthor={\documentAuthor},
-    pdfsubject={\documentType},
-    pdfcreator={pdflatex, LaTeX with KOMA-Script},
-    pdfpagemode=UseOutlines,
-    pdfdisplaydoctitle=true,
-    pdflang={de},
-    colorlinks = false,
-	linkcolor=LinkColor,
-	citecolor=LinkColor,
-	filecolor=LinkColor,
-	menucolor=LinkColor,
-	urlcolor=LinkColor,
-	linktocpage=true,
-	bookmarksnumbered=true
-]{hyperref}
+
 
 %% Quelltext
 \usepackage{listings}
